@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPDB Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulir Data Siswa</h2>
+        <form id="ppdbForm">
+            <label for="nama">Nama Lengkap:</label>
+            <input type="text" id="nama" name="nama" required>
+            
+            <label for="nisn">NISN:</label>
+            <input type="text" id="nisn" name="nisn" required>
+            
+            <label for="kelas">Kelas:</label>
+            <select id="kelas" name="kelas" required>
+                <option value="">Pilih Kelas</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            
+            <label for="jurusan">Jurusan:</label>
+            <select id="jurusan" name="jurusan" required>
+                <option value="">Pilih Jurusan</option>
+                <option value="IPA">IPA</option>
+                <option value="IPS">IPS</option>
+                <option value="Bahasa">Bahasa</option>
+            </select>
+            
+            <button type="submit">Simpan Data</button>
+        </form>
+
+        <h3>Data Siswa:</h3>
+        <ul id="dataSiswaList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    // Menangani pengiriman form
+document.getElementById('ppdbForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Mengambil data dari form
+    const nama = document.getElementById('nama').value;
+    const nisn = document.getElementById('nisn').value;
+    const kelas = document.getElementById('kelas').value;
+    const jurusan = document.getElementById('jurusan').value;
+    
+    // Membuat elemen list baru untuk menampilkan data siswa
+    const listItem = document.createElement('li');
+    listItem.textContent = `Nama: ${nama}, NISN: ${nisn}, Kelas: ${kelas}, Jurusan: ${jurusan}`;
+    
+    // Menambahkan item ke dalam list
+    document.getElementById('dataSiswaList').appendChild(listItem);
+    
+    // Mengosongkan form setelah data tersimpan
+    document.getElementById('ppdbForm').reset();
+});
+
+</script>
+</html>
